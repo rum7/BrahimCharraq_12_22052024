@@ -1,5 +1,7 @@
+import { NavLink } from 'react-router-dom'
+
 import logo from '@/assets/logo-sportsee.svg'
-import '@/components/header/header.style.css'
+import '@/components/header/header.style.scss'
 
 export const Header = () => {
     return (
@@ -7,10 +9,10 @@ export const Header = () => {
             <img src={logo} alt="logo sportsee" />
             <nav>
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Réglage</a></li>
-                    <li><a href="#">Communauté</a></li>
+                    <li><NavLink to="/">Accueil</NavLink></li>
+                    <li><NavLink to="/">Profil</NavLink></li>
+                    <li><NavLink to="/">Réglage</NavLink></li>
+                    <li><NavLink to="/">Communauté</NavLink></li>
                 </ul>
             </nav>
         </header>
