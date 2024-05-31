@@ -1,0 +1,28 @@
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 39px;
+
+    .blockStat {
+        display: flex;
+        width: 226px;
+        height: 60px;
+        background: #FBFBFB;
+        // background: #F5EFEF;
+        border-radius: 5px;
+        align-items: center;
+        padding: 32px 0 32px 32px;
+
+        &__icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 24px 0 0;
+            width: 60px;
+            height: 60px;
+            // background: rgb(255 0 0 / 6%);
+            border-radius: 6px;
+        }
+    }
+}
+
