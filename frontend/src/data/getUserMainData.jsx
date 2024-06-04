@@ -2,8 +2,7 @@ import { USER_MAIN_DATA } from '@/mockApi/mockApi'
 
 async function fetchData(apiCheck, userId) {
     if (apiCheck === 'api') {
-        const url = "http://localhost:3000/user"
-        const res = await fetch(`${url}/${userId}`)
+        const res = await fetch(`http://localhost:3000/user/${userId}`)
         return res.json()
     } else {
         let data = {}

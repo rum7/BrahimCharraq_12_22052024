@@ -1,28 +1,18 @@
-section {
+.user-data {
     display: flex;
-    flex-wrap: wrap;
-    gap: 39px;
+    gap: clamp(1.25rem, -1.6779rem + 4.0865vw, 2rem);
+    margin-top: clamp(1.25rem, -1.25rem + 3.9063vw, 1.875rem);
 
-    .blockStat {
+    .user-score {
         display: flex;
-        width: 226px;
-        height: 60px;
-        background: #FBFBFB;
-        // background: #F5EFEF;
-        border-radius: 5px;
-        align-items: center;
-        padding: 32px 0 32px 32px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: clamp(1.25rem, -1.6731rem + 4.5673vw, 2.4375rem);
+    }
 
-        &__icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 24px 0 0;
-            width: 60px;
-            height: 60px;
-            // background: rgb(255 0 0 / 6%);
-            border-radius: 6px;
-        }
+    .user-charts {
+        display: flex;
+        max-width: 1280px;
+        width: 100%;
     }
 }
-

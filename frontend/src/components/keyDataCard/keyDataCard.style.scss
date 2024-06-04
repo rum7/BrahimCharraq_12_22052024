@@ -1,0 +1,30 @@
+.score-card {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.25rem, 0.6346rem + 0.9615vw, 1.5rem);
+    padding: clamp(1rem, -1.6779rem + 4.0865vw, 2rem);
+    width: clamp(9.9375rem, 4.5529rem + 8.4135vw, 12.125rem);
+    background: #FBFBFB;
+    background: #F5EFEF;
+    border-radius: 5px;
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+    }
+
+    h3 {
+        font-size: clamp(1rem, 0.3846rem + 0.9615vw, 1.25rem);
+        color: #282D30;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: clamp(0.75rem, 0.4423rem + 0.4808vw, 0.875rem);
+        color: #74798C;
+    }
+}

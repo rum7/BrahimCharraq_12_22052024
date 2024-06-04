@@ -40,7 +40,15 @@ button {
 
 /**/
 main {
-    padding: 67px 0 0 224px;
+    // padding-top: 60px;
+    // padding-right: 90px;
+    // padding-bottom: 60px;
+    // padding-left: 220px;
+
+    padding-top: clamp(1.25rem, -8.75rem + 15.625vw, 3.75rem);
+    padding-right: clamp(1.875rem, -7.3558rem + 14.4231vw, 5.625rem);
+    padding-bottom: clamp(1.875rem, -2.7404rem + 7.2115vw, 3.75rem);
+    padding-left: clamp(9.375rem, -1.3942rem + 16.8269vw, 13.75rem);
 
     h1 {
         font-weight: 500;

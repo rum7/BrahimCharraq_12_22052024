@@ -1,7 +1,9 @@
+import '@/components/keyDataCard/keyDataCard.style.scss'
+
 export const KeyDataCard = ({ icon, bgIcon, displayName, value, unit }) => {
     return(
-        <div className="blockStat">
-            <div className="blockStat__icon" style={{ backgroundColor : bgIcon }}>
+        <div className="score-card">
+            <div className="score-card__icon" style={{ backgroundColor : bgIcon }}>
                 <img src={icon} alt={`icon ${displayName}`} />
             </div>
             <div>

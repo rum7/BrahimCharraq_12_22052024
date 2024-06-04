@@ -1,0 +1,45 @@
+.recharts-responsive-container {
+    height: clamp(10.3125rem, -4.6875rem + 23.4375vw, 14.0625rem);
+    padding: 24px 32px;
+    background-color: #FBFBFB;
+    background-color: #F5EFEF;
+    border-radius: 5px;
+}
+
+// .recharts-responsive-container[style] {
+//     height: clamp(10.3125rem, -4.6875rem + 23.4375vw, 14.0625rem) !important;
+// }
+
+// .recharts-wrapper {
+//     padding: 24px 32px;
+//     background-color: #FBFBFB;
+//     background-color: red;
+//     border-radius: 5px;
+// }
+
+.recharts-default-legend {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0 32px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.activity-chart__tooltip {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 65px;
+	height: 80px;
+	font-weight: 500;
+	font-size: 0.75rem;
+	color: #fff;
+	background-color: #E60000;
+}
+
+.activity-chart__title {
+    font-weight: 500;
+    font-size: 15px;
+    color: #20253A;
+}

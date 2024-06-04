@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueries } from '@tanstack/react-query'
 import { getUserMainData } from '@/data/getUserMainData'
+import { getUserActivity } from '@/data/getUserActivity'
 
 import { Greeting } from '@/components'
 import { KeyDataCard } from '@/components'
+import { ActivityChart } from '@/components'
 
 import iconCalorie from '@/assets/icon-calorie.svg'
 import iconProtein from '@/assets/icon-protein.svg'
@@ -40,45 +42,61 @@ export const Dashboard = () => {
     const { apiCheck } = useParams()
     const { userId } = useParams()
 
-    const { data:user, isLoading, isError, error } = useQuery({
-        queryKey: ['userData'], 
-        queryFn: () => getUserMainData(apiCheck, userId)
-    })
-    
-    if (isLoading) return (
+    const { 
+        data: userScore,
+        isLoading: userScoreIsLoading,
+        isError: userScoreIsError,
+        error: userScoreError 
+    } = useQuery({ queryKey: ['userMainData'], queryFn: () => getUserMainData(apiCheck, userId) })
+
+    const { 
+        data: userActivity,
+        isLoading: userActivityIsLoading,
+        isError: userActivityIsError,
+        error: userActivityError 
+    } = useQuery({ queryKey: ['userActivityData'], queryFn: () => getUserActivity(apiCheck, userId) })
+   
+    if (userScoreIsLoading || userActivityIsLoading) return (
         <main>
             <h2>Loading...</h2>
         </main>
     )
-    if (isError) return (
+    if (userScoreIsError || userActivityIsError) return (
         <main>
-            <h2>An error has occured: {error.message}</h2>
+            <h2>An error has occured: {userScoreError.message} {userActivityError.message}</h2>
         </main>
     )
    
     return(
         <main>
             <Greeting
-                firstname={user.userInfos.firstName}
+                firstname={userScore.userInfos.firstName}
             />
 
-            <section>
-                {
-                    user.keyData.map((data, index) => {
-                        setIcon(data.name)
-                        return (
-                            <KeyDataCard 
-                                key={index}
-                                icon={iconData.path}
-                                bgIcon={iconData.bgIcon}
-                                displayName={data.displayName}
-                                value={data.value}
-                                unit={data.unit}
-                            />
-                        )                                            
-                    })
-                }
+            <section className='user-data'>
+                <div className="user-charts">
+                    <ActivityChart data={userActivity.sessions}/>
+                </div>
+
+                <div className="user-score">
+                    {
+                        userScore.keyData.map((data, index) => {
+                            setIcon(data.name)
+                            return (
+                                <KeyDataCard 
+                                    key={index}
+                                    icon={iconData.path}
+                                    bgIcon={iconData.bgIcon}
+                                    displayName={data.displayName}
+                                    value={data.value}
+                                    unit={data.unit}
+                                />
+                            )                                            
+                        })
+                    }
+                </div>
             </section>
+
         </main>
     )
 }
