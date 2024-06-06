@@ -7,12 +7,25 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        gap: clamp(1.25rem, -1.6731rem + 4.5673vw, 2.4375rem);
+        justify-content: space-between;
+        // gap: clamp(1.25rem, -1.6731rem + 4.5673vw, 2.4375rem);
     }
 
     .user-charts {
         display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
         max-width: 1280px;
         width: 100%;
+    }
+}
+
+@media screen and (width < 1440px) {
+    .user-data {
+        flex-direction: column-reverse;
+        
+        .user-score {
+            flex-direction: row;
+        }
     }
 }

@@ -1,21 +1,20 @@
-.recharts-responsive-container {
-    height: clamp(10.3125rem, -4.6875rem + 23.4375vw, 14.0625rem);
+.user-charts__user-activity{
+    display: flex;
+    flex-basis: 100%;
+}
+
+.user-charts__user-average-session,
+.user-charts__user-performance {
+    display: flex;
+    flex-basis: calc((100% - 65px)/3);
+}
+
+.user-charts__user-activity .recharts-responsive-container {
     padding: 24px 32px;
     background-color: #FBFBFB;
     background-color: #F5EFEF;
     border-radius: 5px;
 }
-
-// .recharts-responsive-container[style] {
-//     height: clamp(10.3125rem, -4.6875rem + 23.4375vw, 14.0625rem) !important;
-// }
-
-// .recharts-wrapper {
-//     padding: 24px 32px;
-//     background-color: #FBFBFB;
-//     background-color: red;
-//     border-radius: 5px;
-// }
 
 .recharts-default-legend {
     display: flex;
