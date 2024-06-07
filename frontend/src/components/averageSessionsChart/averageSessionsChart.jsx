@@ -31,7 +31,7 @@ export const AverageSessionsChart = ({ data }) => {
     return(
         <>
             <h3>Durée moyenne des sessions</h3>
-            <ResponsiveContainer height={289}>
+            <ResponsiveContainer height={260}>
                 <LineChart 
                     width={730} 
                     height={250} 
@@ -67,7 +67,7 @@ export const AverageSessionsChart = ({ data }) => {
                         stroke="url(#colorUv)"
                         strokeWidth={2}
                         dot={false}
-                        activeDot={{ r: 4, fill:'#fff', className: 'average-sessions__active-dot'}}
+                        activeDot={{ r: 4, fill:'#fff', className: 'average-session__active-dot'}}
                     />
                 </LineChart>            
             </ResponsiveContainer>

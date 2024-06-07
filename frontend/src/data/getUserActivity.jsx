@@ -16,7 +16,7 @@ function formatData(rawData) {
     const { userId, sessions } = rawData.data
 
     return {
-        userId: userId,
+        userId,
         sessions: sessions.map((sessionData) => (
             {
                 day: new Date(sessionData.day).getDate(),

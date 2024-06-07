@@ -18,7 +18,7 @@ function formatData(rawData) {
     const weekday = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
 
     return {
-        userId: userId,
+        userId,
         sessions: sessions.map((sessionData) => (
             {
                 day: weekday[sessionData.day - 1],

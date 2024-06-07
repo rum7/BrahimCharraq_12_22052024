@@ -1,13 +1,15 @@
 import { useParams } from 'react-router-dom'
-import { useQuery, useQueries } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getUserMainData } from '@/data/getUserMainData'
 import { getUserActivity } from '@/data/getUserActivity'
 import { getUserAverageSessions } from '@/data/getUserAverageSessions'
+import { getUserPerformance } from '@/data/getUserPerformance'
 
 import { Greeting } from '@/components'
 import { KeyDataCard } from '@/components'
 import { ActivityChart } from '@/components'
 import { AverageSessionsChart } from '@/components'
+import { PerformanceChart } from '@/components'
 
 import iconCalorie from '@/assets/icon-calorie.svg'
 import iconProtein from '@/assets/icon-protein.svg'
@@ -64,18 +66,26 @@ export const Dashboard = () => {
         isError: userAverageSessionsIsError,
         error: userAverageSessionsError 
     } = useQuery({ queryKey: ['userAverageSessionsData'], queryFn: () => getUserAverageSessions(apiCheck, userId) })
+
+    const { 
+        data: userPerformance,
+        isLoading: userPerformanceIsLoading,
+        isError: userPerformanceIsError,
+        error: userPerformanceError 
+    } = useQuery({ queryKey: ['userPerformanceData'], queryFn: () => getUserPerformance(apiCheck, userId) })
     
-    if (userStatsIsLoading || userActivityIsLoading || userAverageSessionsIsLoading) return (
+    if (userStatsIsLoading || userActivityIsLoading || userAverageSessionsIsLoading || userPerformanceIsLoading) return (
         <main>
             <h2>Loading...</h2>
         </main>
     )
-    if (userStatsIsError || userActivityIsError || userAverageSessionsIsError) return (
+    if (userStatsIsError || userActivityIsError || userAverageSessionsIsError || userPerformanceIsError) return (
         <main>
             <h2>An error has occured:</h2>
             {userStatsIsError && <p>{userStatsError.message}</p>}
             {userActivityIsError && <p>{userActivityError.message}</p>}
             {userAverageSessionsIsError && <p>{userAverageSessionsError.message}</p>}
+            {userPerformanceIsError && <p>{userPerformanceError.message}</p>}
         </main>
     )
    
@@ -96,6 +106,7 @@ export const Dashboard = () => {
                     </div>
 
                     <div className='user-charts__user-performance'>
+                        <PerformanceChart data={userPerformance.data}/>
                     </div>
 
                     <div className='user-charts__user-score'>

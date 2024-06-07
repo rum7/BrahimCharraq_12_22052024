@@ -31,7 +31,7 @@ function CustomTooltip({ payload, label, active }) {
 
 export const ActivityChart = ({ data }) => {
     return(
-        <ResponsiveContainer height={225}>
+        <ResponsiveContainer height={272}>
             <BarChart
                 width={762}
                 height={100}

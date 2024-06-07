@@ -1,5 +1,7 @@
 .user-charts__user-average-session {
     position: relative;
+    display: flex;
+    flex-basis: calc((100% - 65px)/3);
     h3 {
         position: absolute;
         top: 29px;
@@ -10,7 +12,6 @@
         color: rgba(255, 255, 255, 0.5);
     }
     .recharts-responsive-container {
-        background-color: #FBFBFB;
         background-color: #FF0000;
         border-radius: 5px;
     }
@@ -27,11 +28,6 @@
     font-size: 0.65rem;
     color: #000;
     background-color: #fff;
-}
-
-.average-session-chart__title {
-    font-weight: 500;
-    font-size: 15px;
 }
 
 .average-sessions__active-dot {
