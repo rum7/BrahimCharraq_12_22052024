@@ -1,0 +1,40 @@
+.user-charts__user-score {
+    position: relative;
+    display: flex;
+    flex-basis: calc((100% - 65px)/3);
+    h3 {
+        position: absolute;
+        top: 24px;
+        left: 30px;
+        width: 147px;
+        font-weight: 500;
+        font-size: 15px;
+        color: #20253A;
+    }
+    .recharts-responsive-container {
+        background-color: #FBFBFB;
+        border-radius: 5px;
+    }
+}
+
+.score-chart-label {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    &__value {
+        font-size: 26px;
+        font-weight: 600;
+        color: #282D30;
+    }
+
+    &__desc {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #74798C;
+    }
+}

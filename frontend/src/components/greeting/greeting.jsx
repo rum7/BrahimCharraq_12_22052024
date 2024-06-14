@@ -1,3 +1,9 @@
+/**
+ * Render the Greeting component
+ * @function Greeting
+ * @param {{ firstname: string }}
+ * @returns {JSX.Element}
+ */
 export const Greeting = ({ firstname }) => {
     return(
         <div>        

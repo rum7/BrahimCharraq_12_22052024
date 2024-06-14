@@ -2,21 +2,42 @@ import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 
 import '@/components/activityChart/activityChart.style.scss'
 
-function CustomCursor({ x, y, width, height, stroke }) {
+
+/**
+ * Render a customized cursor for the activity chart component
+ * @function CustomCursor
+ * @param {{ 
+ *  x: number,
+ *  y: number,
+ *  width: number,
+ *  height: number
+ * }}
+ * @returns {JSX.Element}
+ */
+function CustomCursor({ x, y, width, height }) {
     return(
         <Rectangle
             x={x}
             y={y}
             width={width}
             height={height}
-            stroke={stroke}
             fill="#C4C4C4"
             fillOpacity="0.5"
         />
     )
 }
 
-function CustomTooltip({ payload, label, active }) {
+
+/**
+ * Render a customized tooltip for the activity chart component
+ * @function CustomTooltip
+ * @param {{ 
+ *  payload: Array<{ value: number }>,
+ *  active: boolean 
+ * }}
+ * @returns {JSX.Element}
+ */
+function CustomTooltip({ payload, active }) {
     if (active) {
         return (
             <div className="activity-chart__tooltip">
@@ -29,7 +50,18 @@ function CustomTooltip({ payload, label, active }) {
     return null;
 }
 
-export const ActivityChart = ({ data }) => {
+
+/**
+ * Render the activity chart component
+ * @function ActivityChart
+ * @param {{ data: Array<{ 
+ *  day: number,
+ *  kilogram: number,
+ *  calories: number
+ * }>}}
+ * @returns {JSX.Element}
+ */
+export const ActivityChart = ({ data }) => {    
     return(
         <ResponsiveContainer height={272}>
             <BarChart
@@ -81,7 +113,7 @@ export const ActivityChart = ({ data }) => {
                     height={50}
                     iconSize={10}
                     iconType='circle'
-                    formatter={(value, entry, index) => <span style={{ color: '#74798C'}}>{value}</span>}
+                    formatter={(value) => <span style={{ color: '#74798C'}}>{value}</span>}
                 />
                 <Bar
                     yAxisId="kg"

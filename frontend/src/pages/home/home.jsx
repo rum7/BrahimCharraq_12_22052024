@@ -3,6 +3,12 @@ import { useState } from 'react'
 
 import '@/pages/home/home.style.scss'
 
+
+/**
+ * Render the home component
+ * @function Home
+ * @returns {JSX.Element}
+ */
 export const Home = () => {  
     const [fetchType, setfetchType] = useState("api")
     return(
@@ -11,9 +17,24 @@ export const Home = () => {
             <p>Bienvenue sur la platforme Sportsee, sélectionnez un utilisateur </p>
             <div>
                 <div className="select-fetchMethod">
-                    <input id="toggle-on" className="toggle toggle-left" name="toggle" value="false" type="radio" defaultChecked onChange={() => setfetchType("api")} />
+                    <input
+                        id="toggle-on"
+                        className="toggle toggle-left"
+                        name="toggle"
+                        value="false"
+                        type="radio"
+                        defaultChecked onChange={() => setfetchType("api")}
+                    />
                     <label htmlFor="toggle-on" className="btn">api</label>
-                    <input id="toggle-off" className="toggle toggle-right" name="toggle" value="true" type="radio" onChange={() => setfetchType("mock")} />
+
+                    <input
+                        id="toggle-off"
+                        className="toggle toggle-right"
+                        name="toggle"
+                        value="true"
+                        type="radio"
+                        onChange={() => setfetchType("mock")}
+                    />
                     <label htmlFor="toggle-off" className="btn">mock</label>
                 </div>
                 <ul className='select-user__btn'>

@@ -3,6 +3,12 @@ import { NavLink } from 'react-router-dom'
 import logo from '@/assets/logo-sportsee.svg'
 import '@/components/header/header.style.scss'
 
+
+/**
+ * Render the header component
+ * @function Header
+ * @returns {JSX.Element}
+ */
 export const Header = () => {
     return (
         <header className='header__app'>

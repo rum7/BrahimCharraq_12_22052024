@@ -2,15 +2,19 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
 
 import '@/components/performanceChart/performanceChart.style.scss'
 
-const CustomizedLabel = ({ index, x, y, payload }) => {
-    // const specialStyle = {
-    //     fontSize: 15,
-    // }
-    // const defaultStyle = {
-    //     fontSize: 12,
-    // }
-    // const style = index === 3 ? {...defaultStyle, ...specialStyle2} : defaultStyle
 
+/**
+ * Render a customized label for the performance chart component
+ * @function CustomizedLabel
+ * @param {{ 
+ *  index: number,
+ *  x: number,
+ *  y: number,
+ *  payload: { value: string } 
+ * }}
+ * @returns {JSX.Element}
+ */
+const CustomizedLabel = ({ index, x, y, payload }) => {
     const tickClass = () => {
         if ( index === 0 ) return 'top-tick' 
         if ( index === 1 ) return 'top-right-tick' 
@@ -25,9 +29,6 @@ const CustomizedLabel = ({ index, x, y, payload }) => {
             x={x} 
             y={y} 
             textAnchor="middle" 
-            // dx={0} 
-            // dy={0} 
-            // style={style}
             className={`default-tick ${tickClass()}`}
         >
             {payload.value}
@@ -35,6 +36,16 @@ const CustomizedLabel = ({ index, x, y, payload }) => {
     )
 }
 
+
+/**
+ * Render the performance chart component
+ * @function PerformanceChart
+ * @param {{ data: Array<{
+ *  displayName: string,
+ *  value: number
+ * }>}}
+ * @returns {JSX.Element}
+ */
 export const PerformanceChart = ({ data }) => {
     return(
         <>
@@ -47,6 +58,7 @@ export const PerformanceChart = ({ data }) => {
                     margin={{ top: 0, right: 0, left: 0, bottom: 0 }}                    
                 >
                     <PolarGrid 
+                        polarRadius={[10, 25, 45, 65, 85]}
                         radialLines={false} 
                         stroke='#fff'
                     />

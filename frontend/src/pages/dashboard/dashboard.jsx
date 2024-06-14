@@ -1,15 +1,11 @@
-import { useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
-import { getUserMainData } from '@/data/getUserMainData'
-import { getUserActivity } from '@/data/getUserActivity'
-import { getUserAverageSessions } from '@/data/getUserAverageSessions'
-import { getUserPerformance } from '@/data/getUserPerformance'
+import getData from '@/data/getData'
 
 import { Greeting } from '@/components'
 import { KeyDataCard } from '@/components'
 import { ActivityChart } from '@/components'
 import { AverageSessionsChart } from '@/components'
 import { PerformanceChart } from '@/components'
+import { ScoreChart } from '@/components'
 
 import iconCalorie from '@/assets/icon-calorie.svg'
 import iconProtein from '@/assets/icon-protein.svg'
@@ -21,6 +17,12 @@ import '@/pages/dashboard/dashboard.style.scss'
 
 let iconData = {}
 
+/**
+ * Setting up the icon data for the user cards
+ * @function setIcon
+ * @param {string} statName 
+ * @returns {object}
+ */
 function setIcon(statName) {
     if (statName === 'calorie') {
         iconData.path = iconCalorie,
@@ -42,50 +44,32 @@ function setIcon(statName) {
     return iconData
 }
 
+
+/**
+ * Render the dashboard component
+ * @function Dashboard
+ * @returns {JSX.Element}
+ */
 export const Dashboard = () => {
-    const { apiCheck } = useParams()
-    const { userId } = useParams()
-
     const { 
-        data: userStats,
-        isLoading: userStatsIsLoading,
-        isError: userStatsIsError,
-        error: userStatsError 
-    } = useQuery({ queryKey: ['userMainData'], queryFn: () => getUserMainData(apiCheck, userId) })
-
-    const { 
-        data: userActivity,
-        isLoading: userActivityIsLoading,
-        isError: userActivityIsError,
-        error: userActivityError 
-    } = useQuery({ queryKey: ['userActivityData'], queryFn: () => getUserActivity(apiCheck, userId) })
-   
-    const { 
-        data: userAverageSessions,
-        isLoading: userAverageSessionsIsLoading,
-        isError: userAverageSessionsIsError,
-        error: userAverageSessionsError 
-    } = useQuery({ queryKey: ['userAverageSessionsData'], queryFn: () => getUserAverageSessions(apiCheck, userId) })
-
-    const { 
-        data: userPerformance,
-        isLoading: userPerformanceIsLoading,
-        isError: userPerformanceIsError,
-        error: userPerformanceError 
-    } = useQuery({ queryKey: ['userPerformanceData'], queryFn: () => getUserPerformance(apiCheck, userId) })
+        isLoading, 
+        isError, 
+        errorMessage, 
+        userStats, 
+        userActivity, 
+        userAverageSessions, 
+        userPerformance        
+    } = getData()
     
-    if (userStatsIsLoading || userActivityIsLoading || userAverageSessionsIsLoading || userPerformanceIsLoading) return (
+    if (isLoading) return (
         <main>
             <h2>Loading...</h2>
         </main>
     )
-    if (userStatsIsError || userActivityIsError || userAverageSessionsIsError || userPerformanceIsError) return (
+    if (isError) return (
         <main>
             <h2>An error has occured:</h2>
-            {userStatsIsError && <p>{userStatsError.message}</p>}
-            {userActivityIsError && <p>{userActivityError.message}</p>}
-            {userAverageSessionsIsError && <p>{userAverageSessionsError.message}</p>}
-            {userPerformanceIsError && <p>{userPerformanceError.message}</p>}
+            {errorMessage.map((err) => <p>{err}</p>)}
         </main>
     )
    
@@ -110,8 +94,8 @@ export const Dashboard = () => {
                     </div>
 
                     <div className='user-charts__user-score'>
-                    </div>
-                    
+                        <ScoreChart data={userStats.todayScore}/>
+                    </div>                    
                 </div>
 
                 <div className="user-score">

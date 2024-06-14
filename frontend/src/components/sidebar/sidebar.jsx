@@ -14,6 +14,12 @@ const sideNavigation = [
     { path: 'musculation', icon: IconMsculation }
 ]
 
+
+/**
+ * Render the sidebar component
+ * @function Sidebar
+ * @returns {JSX.Element}
+ */
 export const Sidebar = () => {
     return(
         <aside className='side-navigation'>

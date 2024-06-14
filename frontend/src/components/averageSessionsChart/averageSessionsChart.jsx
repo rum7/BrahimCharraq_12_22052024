@@ -2,7 +2,19 @@ import { LineChart, Line, Rectangle, XAxis, YAxis, Tooltip, ResponsiveContainer 
 
 import '@/components/averageSessionsChart/averageSessionsChart.style.scss'
 
-function CustomCursor({ points, width, height, stroke }) {
+
+/**
+ * Render a customized cursor for the average sessions chart component
+ * @function CustomCursor
+ * @param {{ 
+ *  x: number,
+ *  y: number,
+ *  width: number,
+ *  height: number
+ * }}
+ * @returns {JSX.Element}
+ */
+function CustomCursor({ points, width, height }) {
     return(
         <Rectangle
             x={points[0].x}
@@ -15,7 +27,17 @@ function CustomCursor({ points, width, height, stroke }) {
     )
 }
 
-function CustomTooltip({ payload, label, active }) {
+
+/**
+ * Render a customized tooltip for the average sessions chart component
+ * @function CustomTooltip
+ * @param {{ 
+ *  payload: Array<{ value: number }>,
+ *  active: boolean 
+ * }}
+ * @returns {JSX.Element}
+ */
+function CustomTooltip({ payload, active }) {
     if (active) {
         return (
             <div className="average-session__tooltip">
@@ -27,6 +49,16 @@ function CustomTooltip({ payload, label, active }) {
     return null;
 }
 
+
+/**
+ * Render the average session chart component
+ * @function AverageSessionsChart
+ * @param {{ data: Array<{
+ *  day: string,
+ *  sessionLength: number
+ * }>}}
+ * @returns {JSX.Element}
+ */
 export const AverageSessionsChart = ({ data }) => {
     return(
         <>

@@ -1,5 +1,13 @@
 import { USER_PERFORMANCE } from '@/mockApi/mockApi'
 
+/**
+ * Retrieves the user's performance data
+ * Fetches from api or mock api depending of apiCheck value
+ * @function fetchData
+ * @param {string} apiCheck 
+ * @param {string} userId
+ * @returns {object}
+ */
 async function fetchData(apiCheck, userId) {
     if (apiCheck === 'api') {
         const res = await fetch(`http://localhost:3000/user/${userId}/performance`)
@@ -12,6 +20,13 @@ async function fetchData(apiCheck, userId) {
     }
 }
 
+
+/**
+ * Formats data
+ * @function formatData
+ * @param {object} rawData 
+ * @returns {object}
+ */
 function formatData(rawData) {
     const { userId, kind, data } = rawData.data
 
@@ -55,6 +70,14 @@ function formatData(rawData) {
     }
 }
 
+
+/**
+ * Fetching and formatting before returning data
+ * @function getUserPerformance
+ * @param {string} apiCheck 
+ * @param {string} userId
+ * @returns {object}
+ */
 export const getUserPerformance = async (apiCheck, userId) => {
     const rawData = await fetchData(apiCheck, userId)
     const userPerformance = formatData(rawData)
