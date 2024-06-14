@@ -39,7 +39,7 @@ SportSee is a sport analytics dashboard that let you know all the data about you
   npm start
 ```
 
-#### Go to the project frontend directory
+#### Go to the frontend directory
 
 ```bash
   cd BrahimCharraq_12_22052024-main/frontent
