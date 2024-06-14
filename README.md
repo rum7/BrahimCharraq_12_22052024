@@ -2,7 +2,7 @@
 
 SportSee is a sport analytics dashboard that let you know all the data about your activities such as performance, average sessions, daily score etc.
 
-![App Screenshot](https://raw.githubusercontent.com/rum7/BrahimCharraq_12_22052024/main/public/sportsee-app.png)
+![App Screenshot](https://github.com/rum7/BrahimCharraq_12_22052024/blob/main/frontend/public/sportsee-app.png)
 
 ## Stack
 
