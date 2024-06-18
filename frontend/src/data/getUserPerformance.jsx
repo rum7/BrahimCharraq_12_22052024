@@ -60,11 +60,11 @@ function formatData(rawData) {
     return {
         userId,
         kind,
-        data: data.map((perfData) => (
+        data: data.map((perfData, index) => (
             {
                 value: perfData.value,
-                kind: subjectData[perfData.kind-1][perfData.kind],
-                displayName: subjectData[perfData.kind-1].displayName
+                kind: subjectData[index][perfData.kind],
+                displayName: subjectData[index].displayName
             }
         ))
     }
